@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -18,6 +19,13 @@ pipeline {
         stage('Retrain Model') {
             steps {
                 sh 'venv/bin/python retrain.py'
+            }
+        }
+
+        stage('Deploy Model') {
+            steps {
+                sh 'install -m 644 iris_model.pkl /home/arnnavvvv/app/iris_model.pkl'
+                sh 'sudo systemctl restart ml-api'
             }
         }
 
