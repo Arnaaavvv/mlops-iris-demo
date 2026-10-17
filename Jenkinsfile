@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -25,7 +24,7 @@ pipeline {
         stage('Deploy Model') {
             steps {
                 sh 'install -m 644 iris_model.pkl /home/arnnavvvv/app/iris_model.pkl'
-                sh 'sudo systemctl restart ml-api'
+                sh 'sudo /usr/bin/systemctl restart ml-api'
             }
         }
 
